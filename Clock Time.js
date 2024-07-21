@@ -57,6 +57,15 @@ let jumpScale = 600;
 let groundY = 389;
 let lastSecond = -1;
 let marioJumpSound;
+let coin;
+let dimXCoin = 120;
+let dimYCoin = 120;
+let posXCoin = posXBlockQm;
+let posYCoin = 175;
+let coinSound;
+let lastMinute = -1;
+let coinBounceScale = 1000;
+let blockY = 175;
 
 function preload(){
 
@@ -67,10 +76,12 @@ function preload(){
 	block = loadImage('block.png');
 	marioStand = loadImage('mario_stand1.png');
 	marioJump = loadImage('mario_jump1.png');
+	coin = loadImage('coin.png');
 
 	marioFont = loadFont('Super Plumber Brothers.ttf');
 
 	marioJumpSound = loadSound('mario_jump_sound.mp3');
+	coinSound = loadSound('coin_sound.mp3');
 
 }
 
@@ -93,6 +104,7 @@ function setup(){
 	block.resize(dimXBlock * factorScale, dimYBlock * factorScale);
 	marioStand.resize(dimXMarioStand * factorScale, dimYMarioStand * factorScale);
 	marioJump.resize(dimXMarioJump * factorScale, dimYMarioJump * factorScale);
+	coin.resize(dimXCoin * factorScale, dimYCoin * factorScale);
 
 }
 
@@ -109,6 +121,8 @@ function draw(){
 	image(cloud, posXCloud2 * factorScale, posYCloud2 * factorScale);
 
 	marioAnimation();
+
+	coinAnimation();
 
 	//Draw blockQm
 	image(blockQm, posXBlockQm * factorScale, posYBlockQm * factorScale);
@@ -141,6 +155,21 @@ function marioAnimation(){
 		lastSecond = second();
 	}
 
+}
+
+function coinAnimation(){
+	image(coin,posXCoin*factorScale,posYCoin*factorScale);
+	const milliseconds = (new Date().getMilliseconds()) / 1000;
+	const seconds = second() + milliseconds;
+	posYCoin = blockY + min(0, (seconds - 0.35) * (seconds - 1.1))*coinBounceScale;
+
+	if (lastMinute !== minute()) {
+
+		if (lastMinute !== -1) coinSound.play();
+		
+		lastMinute = minute();
+
+	}
 }
 
 function addHoursText(){
