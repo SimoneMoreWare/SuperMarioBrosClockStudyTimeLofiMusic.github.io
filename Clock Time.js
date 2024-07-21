@@ -14,18 +14,35 @@ let dimXPanel = 690;
 let dimYPanel = 270;
 let posXPanel = 55;
 let posYPanel = 90;
+let blockQm;
+let dimXBlockQm = 120;
+let dimYBlockQm = 120;
+let posXBlockQm = 930;
+let posYBlockQm = 175;
+let block;
+let dimXBlock = 120;
+let dimYBlock = 120;
+let posXBlock1 = 1050;
+let posYBlock1 = 175;
+let posXBlock2 = 1170;
+let posYBlock2 = 175;
+let posXBlock3 = 1290;
+let posYBlock3 = 175;
+
 
 function preload(){
 
     background = loadImage('background.png');
 	cloud = loadImage('cloud.png');
 	panel = loadImage('panel.png');
+	blockQm = loadImage('block_qm.png');
+	block = loadImage('block.png');
 }
 
 function setup(){
 
 	// Calculate scale factor to adapt image of display dimensions
-	factorScale = min(displayWidth / dimXBackground, displayHeight / dimYBackground)*1;
+	factorScale = min(windowWidth / dimXBackground, windowHeight / dimYBackground)*1;
 
     createCanvas(dimXBackground * factorScale, dimYBackground * factorScale);
 
@@ -33,6 +50,8 @@ function setup(){
     background.resize(dimXBackground * factorScale, dimYBackground * factorScale);
 	cloud.resize(dimXCloud * factorScale, dimYCloud * factorScale);
 	panel.resize(dimXPanel * factorScale, dimYPanel * factorScale);
+	blockQm.resize(dimXBlockQm * factorScale, dimYBlockQm * factorScale);
+	block.resize(dimXBlock * factorScale, dimYBlock * factorScale);
 }
 
 function draw(){
@@ -46,4 +65,12 @@ function draw(){
 
 	//Draw panel
 	image(panel, posXPanel * factorScale, posYPanel * factorScale);
+
+	//Draw blockQm
+	image(blockQm, posXBlockQm * factorScale, posYBlockQm * factorScale);
+
+	//Draw blocks
+	image(block,posXBlock1 * factorScale ,posYBlock1 * factorScale);
+	image(block,posXBlock2 * factorScale ,posYBlock2 * factorScale);
+	image(block,posXBlock3 * factorScale ,posYBlock3 * factorScale);
 }
