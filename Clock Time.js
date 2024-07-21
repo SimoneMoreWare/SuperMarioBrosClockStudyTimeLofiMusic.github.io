@@ -43,7 +43,20 @@ let posYSecond = 285;
 let posXSecondShadow = 1350;
 let posYSecondShadow = 275;
 let marioStand;
+let dimXMarioStand = 200;
+let dimYMarioStand = 200;
+let posXMarioStand = posXBlock3-20;
+let posYMarioStand = 389;
 let marioJump;
+let dimXMarioJump = 200;
+let dimYMarioJump = 200;
+let posXMarioJump = posXBlock3-20;
+let posYMarioJump = posYMarioStand;
+let milliseconds;
+let jumpScale = 600;
+let groundY = 389;
+let lastSecond = -1;
+let marioJumpSound;
 
 function preload(){
 
@@ -52,9 +65,17 @@ function preload(){
 	panel = loadImage('panel.png');
 	blockQm = loadImage('block_qm.png');
 	block = loadImage('block.png');
+	marioStand = loadImage('mario_stand1.png');
+	marioJump = loadImage('mario_jump1.png');
 
 	marioFont = loadFont('Super Plumber Brothers.ttf');
 
+	marioJumpSound = loadSound('mario_jump_sound.mp3');
+
+}
+
+function mousePressed() {
+	userStartAudio();
 }
 
 function setup(){
@@ -70,6 +91,8 @@ function setup(){
 	panel.resize(dimXPanel * factorScale, dimYPanel * factorScale);
 	blockQm.resize(dimXBlockQm * factorScale, dimYBlockQm * factorScale);
 	block.resize(dimXBlock * factorScale, dimYBlock * factorScale);
+	marioStand.resize(dimXMarioStand * factorScale, dimYMarioStand * factorScale);
+	marioJump.resize(dimXMarioJump * factorScale, dimYMarioJump * factorScale);
 
 }
 
@@ -78,12 +101,14 @@ function draw(){
     // Draw background on canvas
 	image(background, 0, 0);
 
+	//Draw panel
+	image(panel, posXPanel * factorScale, posYPanel * factorScale);
+
 	//Draw clouds
 	image(cloud, posXCloud1 * factorScale, posYCloud1 * factorScale);
 	image(cloud, posXCloud2 * factorScale, posYCloud2 * factorScale);
 
-	//Draw panel
-	image(panel, posXPanel * factorScale, posYPanel * factorScale);
+	marioAnimation();
 
 	//Draw blockQm
 	image(blockQm, posXBlockQm * factorScale, posYBlockQm * factorScale);
@@ -95,6 +120,26 @@ function draw(){
 
 	addHoursText();
 
+
+}
+
+function marioAnimation(){
+
+	const milliseconds = (new Date().getMilliseconds()) / 1000;
+	posYMarioStand = groundY + min(0, milliseconds*(milliseconds - 0.8))*jumpScale;
+
+	if (milliseconds > 0.05 && milliseconds < 0.75){
+		image(marioJump,posXMarioJump*factorScale,posYMarioStand*factorScale);
+	}else{
+		image(marioStand,posXMarioStand*factorScale,posYMarioStand*factorScale);
+	}
+
+	if (lastSecond !== second() ) {
+		if (lastSecond !== -1){
+			marioJumpSound.play();
+		}
+		lastSecond = second();
+	}
 
 }
 
