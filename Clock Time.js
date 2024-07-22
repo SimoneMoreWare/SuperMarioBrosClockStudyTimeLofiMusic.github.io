@@ -164,7 +164,7 @@ function toggleAudio(){
 		audioIcon = createImg('noAudio.png');
 	} else {
 		audioIcon.remove();
-		audioIcon = createImg('Audio.png');
+		audioIcon = createImg('audio.png');
 	}
 	audioIcon.position(posXAudioIcon*factorScale,posYAudioIcon*factorScale);
 	audioIcon.attribute('onclick','toggleAudio()');
