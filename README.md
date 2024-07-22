@@ -2,69 +2,68 @@
 
 ![Super Mario Bros Clock Study Time Lofi Music](https://github.com/SimoneMoreWare/SuperMarioBrosClockStudyTimeLofiMusic.github.io/blob/main/wallpaperSocial.png)
 
-Questo progetto è un'applicazione orologio divertente e coinvolgente ispirata a Super Mario Bros, arricchita con musica lofi per lo studio. L'orologio presenta personaggi e elementi animati di Mario, offrendo un modo delizioso per tenere traccia del tempo mentre si ascolta musica rilassante.
+This project is a fun and engaging clock application inspired by Super Mario Bros, enhanced with study-time lofi music. The clock features animated Mario characters and elements, providing a delightful way to keep track of time while enjoying some soothing music.
 
-## Sommario
+## Table of Contents
 
 - [Demo](#demo)
-- [Caratteristiche](#caratteristiche)
-- [Installazione](#installazione)
-- [Utilizzo](#utilizzo)
-- [Tecnologie](#tecnologie)
-- [Licenza](#licenza)
-- [Ringraziamenti](#ringraziamenti)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Technologies](#technologies)
+- [License](#license)
+- [Acknowledgments](#acknowledgments)
 
 ## Demo
 
-Guarda la demo live [qui](https://simonemoreware.github.io/SuperMarioBrosClockStudyTimeLofiMusic.github.io/).
+Check out the live demo [here](https://simonemoreware.github.io/SuperMarioBrosClockStudyTimeLofiMusic.github.io/).
 
-## Caratteristiche
+## Features
 
-- **Tema Mario:** Include sfondi, personaggi e animazioni a tema Mario.
-- **Visualizzazione Orologio:** Mostra l'ora corrente (ore, minuti e secondi) in blocchi stile Mario.
-- **Animazioni:** Presenta animazioni di Mario che salta, un Goomba che cammina e una moneta che rimbalza.
-- **Musica Lofi:** Include una playlist Spotify con musica lofi per lo studio.
-- **Elementi Interattivi:** Icona audio per attivare/disattivare i suoni.
+- **Mario Theme:** Includes Mario-themed backgrounds, characters, and animations.
+- **Clock Display:** Shows the current hour, minute, and second in Mario-style blocks.
+- **Animations:** Features animations of Mario jumping, a Goomba walking, and a coin bouncing.
+- **Lofi Music:** Includes a Spotify playlist with study-time lofi music.
+- **Interactive Elements:** Toggleable audio icon to mute/unmute sounds.
 
-## Installazione
+## Installation
 
-Per eseguire questo progetto in locale, segui questi passaggi:
+To run this project locally, follow these steps:
 
-1. Clona il repository:
+1. Clone the repository:
     ```bash
     git clone https://github.com/SimoneMoreWare/SuperMarioBrosClockStudyTimeLofiMusic.github.io.git
     ```
 
-2. Naviga nella directory del progetto:
+2. Navigate to the project directory:
     ```bash
     cd SuperMarioBrosClockStudyTimeLofiMusic.github.io
     ```
 
-3. Apri `index.html` nel tuo browser preferito.
+3. Open `index.html` in your preferred web browser.
 
-## Utilizzo
+## Usage
 
-Una volta aperto `index.html` nel browser, vedrai l'orologio a tema Super Mario con animazioni e musica. L'ora viene visualizzata in blocchi, e l'iframe di Spotify fornisce musica lofi continua. Clicca sull'icona audio per attivare o disattivare i suoni.
+Once you open `index.html` in your browser, you will see the Super Mario-themed clock with animations and music. The time is displayed in blocks, and the Spotify iframe provides continuous lofi music. Click on the audio icon to mute or unmute the sounds.
 
-### Controlli
+### Controls
 
-- **Toggle Audio:** Clicca sull'icona audio per attivare o disattivare i suoni.
-- **Visibilità della Scheda:** Ti avvisa quando cambi scheda e ti dà il bentornato quando torni.
+- **Toggle Audio:** Click the audio icon to turn sounds on or off.
+- **Tab Visibility:** Alerts you when you switch to another tab and welcomes you back when you return.
 
-## Tecnologie
+## Technologies
 
-- **HTML:** Struttura della pagina web.
-- **CSS:** Stile della pagina web.
-- **JavaScript (p5.js):** Utilizzato per animazioni ed elementi interattivi.
-- **Spotify Embed:** Per incorporare la playlist di musica lofi.
+- **HTML:** Structure of the webpage.
+- **CSS:** Styling of the webpage.
+- **JavaScript (p5.js):** Used for animations and interactive elements.
+- **Spotify Embed:** For embedding the lofi music playlist.
 
-## Licenza
+## License
 
-Questo progetto è licenziato sotto la Licenza MIT. Vedi il file [LICENSE](LICENSE) per i dettagli.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-## Ringraziamenti
+## Acknowledgments
 
-- [p5.js](https://p5js.org/) - Libreria JavaScript utilizzata per il creative coding.
-- [Super Plumber Brothers Font](https://www.dafont.com/super-plumber-brothers.font) - Font utilizzato nel progetto.
-- [OpenGameArt](https://opengameart.org/) - Fonte di alcuni asset di gioco.
-
+- [p5.js](https://p5js.org/) - JavaScript library used for creative coding.
+- [Super Plumber Brothers Font](https://www.dafont.com/super-plumber-brothers.font) - Font used in the project.
+- [OpenGameArt](https://opengameart.org/) - Source of some game assets.
