@@ -253,7 +253,7 @@ function addIframe() {
 	iframe = createElement('iframe');
 	
 	iframe.attribute('style', 'border-radius:12px');
-	iframe.attribute('src', 'https://open.spotify.com/embed/playlist/2etD8gdCMHdaCVlfWmdZAS?utm_source=generator');
+	iframe.attribute('src', 'https://open.spotify.com/embed/playlist/2etD8gdCMHdaCVlfWmdZAS?utm_source=generator&theme=0');
 	iframe.attribute('width', valueXIframe* factorScale);
 	iframe.attribute('height', valueHIframe* factorScale);
 	iframe.attribute('frameBorder', '0');
