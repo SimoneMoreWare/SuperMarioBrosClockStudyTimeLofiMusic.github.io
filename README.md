@@ -1,6 +1,6 @@
 # Super Mario Bros Clock Study Time Lofi Music
 
-![Super Mario Bros Clock Study Time Lofi Music](https://github.com/SimoneMoreWare/SuperMarioBrosClockStudyTimeLofiMusic.github.io/blob/main/background.png)
+![Super Mario Bros Clock Study Time Lofi Music](https://github.com/SimoneMoreWare/SuperMarioBrosClockStudyTimeLofiMusic.github.io/blob/main/wallpaperSocial.png)
 
 Questo progetto è un'applicazione orologio divertente e coinvolgente ispirata a Super Mario Bros, arricchita con musica lofi per lo studio. L'orologio presenta personaggi e elementi animati di Mario, offrendo un modo delizioso per tenere traccia del tempo mentre si ascolta musica rilassante.
 
