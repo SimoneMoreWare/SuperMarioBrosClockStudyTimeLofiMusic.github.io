@@ -66,6 +66,17 @@ let coinSound;
 let lastMinute = -1;
 let coinBounceScale = 1000;
 let blockY = 175;
+let goomba;
+let dimXGoomba = 140;
+let dimYGoomba = 140;
+let posXGoombaStart = 400;
+let posXGoombaCurrent = 400;
+let posYGoombaStart = 449;
+let flagDx = 1;
+let flagSx = 0;
+let speed = 1;
+let thesholdDx = 160;
+let thesholdSx = 160;
 
 function preload(){
 
@@ -77,6 +88,7 @@ function preload(){
 	marioStand = loadImage('mario_stand1.png');
 	marioJump = loadImage('mario_jump1.png');
 	coin = loadImage('coin.png');
+	goomba = loadImage('goomba.png');
 
 	marioFont = loadFont('Super Plumber Brothers.ttf');
 
@@ -105,7 +117,7 @@ function setup(){
 	marioStand.resize(dimXMarioStand * factorScale, dimYMarioStand * factorScale);
 	marioJump.resize(dimXMarioJump * factorScale, dimYMarioJump * factorScale);
 	coin.resize(dimXCoin * factorScale, dimYCoin * factorScale);
-
+	goomba.resize(dimXGoomba * factorScale, dimYGoomba * factorScale);
 }
 
 function draw(){
@@ -119,6 +131,8 @@ function draw(){
 	//Draw clouds
 	image(cloud, posXCloud1 * factorScale, posYCloud1 * factorScale);
 	image(cloud, posXCloud2 * factorScale, posYCloud2 * factorScale);
+
+	goombaAnimation();
 
 	marioAnimation();
 
@@ -135,6 +149,26 @@ function draw(){
 	addHoursText();
 
 
+}
+
+function goombaAnimation(){
+	image(goomba,posXGoombaCurrent*factorScale,posYGoombaStart*factorScale);
+	
+	if(flagDx===1){
+		posXGoombaCurrent += 1;
+		flagSx = 0;
+	}else if(flagSx===1){
+		posXGoombaCurrent = posXGoombaCurrent - speed;
+		flagDx = 0;
+	}	
+
+	if(posXGoombaCurrent>=((thesholdDx*factorScale)+posXGoombaStart)){
+		flagDx = 0;
+		flagSx = 1;
+	}else if(posXGoombaCurrent<=(-(thesholdSx*factorScale)+posXGoombaStart)){
+		flagDx = 1;
+		flagSx = 0;
+	}
 }
 
 function marioAnimation(){
