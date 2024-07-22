@@ -99,7 +99,12 @@ let posXTotalTimeText = 1330;
 let posYTotalTimeText = 70;
 let posXTotalLivesText = 1480;
 let posYTotalLivesText = 70;
-
+let audioIcon;
+let dimXAudioIcon = 70;
+let dimYAudioIcon = 70;
+let posXAudioIcon = 1500;
+let posYAudioIcon = 150;
+let audioOn = true;
 function preload(){
 
     background = loadImage('background.png');
@@ -111,7 +116,8 @@ function preload(){
 	marioJump = loadImage('mario_jump1.png');
 	coin = loadImage('coin.png');
 	goomba = loadImage('goomba.png');
-
+	
+	
 	marioFont = loadFont('Super Plumber Brothers.ttf');
 
 	marioJumpSound = loadSound('mario_jump_sound.mp3');
@@ -147,9 +153,32 @@ function setup(){
 	marioJump.resize(dimXMarioJump * factorScale, dimYMarioJump * factorScale);
 	coin.resize(dimXCoin * factorScale, dimYCoin * factorScale);
 	goomba.resize(dimXGoomba * factorScale, dimYGoomba * factorScale);
-
 	addIframe();
+	addAudioIcon();
 
+}
+
+function toggleAudio(){
+	if(audioOn){
+		audioIcon.remove();
+		audioIcon = createImg('noAudio.png');
+	} else {
+		audioIcon.remove();
+		audioIcon = createImg('Audio.png');
+	}
+	audioIcon.position(posXAudioIcon*factorScale,posYAudioIcon*factorScale);
+	audioIcon.attribute('onclick','toggleAudio()');
+	audioIcon.style('width',dimXAudioIcon*factorScale);
+	audioIcon.style('height',dimYAudioIcon*factorScale);
+	audioOn = !audioOn;
+}
+
+function addAudioIcon(){
+	audioIcon = createImg('audio.png');
+	audioIcon.position(posXAudioIcon*factorScale,posYAudioIcon*factorScale);
+	audioIcon.attribute('onclick','toggleAudio()');
+	audioIcon.style('width',dimXAudioIcon*factorScale);
+	audioIcon.style('height',dimYAudioIcon*factorScale);
 }
 
 function draw(){
@@ -185,6 +214,7 @@ function draw(){
 	addScoreText(textSizeScores,factorScale,marioFont,"WORLD","UNI",posXTotalWorldText,posYTotalWorldText);
 	addScoreText(textSizeScores,factorScale,marioFont,"TIME",totalTime,posXTotalTimeText,posYTotalTimeText);
 	addScoreText(textSizeScores,factorScale,marioFont,"LIVES","7",posXTotalLivesText,posYTotalLivesText);
+
 
 }
 
@@ -237,7 +267,7 @@ function marioAnimation(){
 
 	if (lastSecond !== second() ) {
 		if (lastSecond !== -1){
-			marioJumpSound.play();
+			if(audioOn) marioJumpSound.play();
 			totalTime = totalTime + 1;
 		}
 		lastSecond = second();
