@@ -1,4 +1,5 @@
 let factorScale = 1;
+let canvas;
 let background;
 let dimXBackground = 1600;
 let dimYBackground = 800;
@@ -77,6 +78,12 @@ let flagSx = 0;
 let speed = 1;
 let thesholdDx = 160;
 let thesholdSx = 160;
+let iframe;
+let container;
+let valueHIframe = (0.6*dimYPanel);
+let valueXIframe = (dimXPanel*0.9);
+let posXIframe = (posXPanel*1.6);
+let posYIframe = (posYPanel*2);
 
 function preload(){
 
@@ -103,11 +110,14 @@ function mousePressed() {
 
 function setup(){
 
+	
 	// Calculate scale factor to adapt image of display dimensions
 	factorScale = min(windowWidth / dimXBackground, windowHeight / dimYBackground)*1;
 
-    createCanvas(dimXBackground * factorScale, dimYBackground * factorScale);
-
+    canvas = createCanvas(dimXBackground * factorScale, dimYBackground * factorScale);
+	container = createDiv();
+	container.style('position','relative');
+	canvas.parent(container);
     // resize images to keep same proportions
     background.resize(dimXBackground * factorScale, dimYBackground * factorScale);
 	cloud.resize(dimXCloud * factorScale, dimYCloud * factorScale);
@@ -118,6 +128,9 @@ function setup(){
 	marioJump.resize(dimXMarioJump * factorScale, dimYMarioJump * factorScale);
 	coin.resize(dimXCoin * factorScale, dimYCoin * factorScale);
 	goomba.resize(dimXGoomba * factorScale, dimYGoomba * factorScale);
+
+	addIframe();
+
 }
 
 function draw(){
@@ -127,7 +140,7 @@ function draw(){
 
 	//Draw panel
 	image(panel, posXPanel * factorScale, posYPanel * factorScale);
-
+	
 	//Draw clouds
 	image(cloud, posXCloud1 * factorScale, posYCloud1 * factorScale);
 	image(cloud, posXCloud2 * factorScale, posYCloud2 * factorScale);
@@ -233,4 +246,22 @@ function addTimeIntoTheBlock(posX,posY,posXShadow,posYShadow,textFontSize,font,v
 	textSize(textFontSize * factorScale);
 	textFont(font);
 	text(value, posXShadow * factorScale, posYShadow * factorScale);
+}
+
+function addIframe() {
+	// Crea l'iframe
+	iframe = createElement('iframe');
+	
+	iframe.attribute('style', 'border-radius:12px');
+	iframe.attribute('src', 'https://open.spotify.com/embed/playlist/2etD8gdCMHdaCVlfWmdZAS?utm_source=generator');
+	iframe.attribute('width', valueXIframe* factorScale);
+	iframe.attribute('height', valueHIframe* factorScale);
+	iframe.attribute('frameBorder', '0');
+	iframe.attribute('allowfullscreen', '');
+	iframe.attribute('allow', 'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture');
+	iframe.attribute('loading', 'lazy');
+	iframe.style('position','absolute');
+
+	iframe.parent(container);
+	iframe.position(posXIframe* factorScale,posYIframe* factorScale);
 }
