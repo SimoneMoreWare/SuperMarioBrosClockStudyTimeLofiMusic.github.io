@@ -123,6 +123,10 @@ function mousePressed() {
 	userStartAudio();
 }
 
+function touchStarted() {
+	userStartAudio();
+}
+
 function setup(){
 
 	
@@ -191,24 +195,6 @@ function addScoreText(fontSize,factorScale,font,title,value,posX,posY){
 	textSize(fontSize * factorScale);
 	textFont(font);
 	text(title+"\n"+value, posX * factorScale, posY * factorScale);
-}
-
-function addTotalCoinsText(){
-	fill(255,223,201);
-	noStroke();
-	textAlign(CENTER);
-	textSize(textSizeScores * factorScale);
-	textFont(marioFont);
-	text("COINS\n"+totalCoins, posXTotalCoinsText * factorScale, posYTotalCoinsText * factorScale);
-}
-
-function addTotalTimeText(){
-	fill(255,223,201);
-	noStroke();
-	textAlign(CENTER);
-	textSize(textSizeScores * factorScale);
-	textFont(marioFont);
-	text("TIME\n"+totalTime, posXTotalTimeText * factorScale, posYTotalTimeText * factorScale);
 }
 
 function goombaAnimation(){
