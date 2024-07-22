@@ -123,7 +123,7 @@ function mousePressed() {
 	userStartAudio();
 }
 
-function touchStarted() {
+function touchMoved() {
 	userStartAudio();
 }
 
