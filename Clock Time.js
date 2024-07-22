@@ -29,6 +29,7 @@ let posXBlock2 = 1170;
 let posYBlock2 = 175;
 let posXBlock3 = 1290;
 let posYBlock3 = 175;
+let lenJumpBlock3 = 15;
 let marioFont;
 let textFontSize = 85;
 let posXHour = 1114;
@@ -171,7 +172,7 @@ function draw(){
 	//Draw blocks
 	image(block,posXBlock1 * factorScale ,posYBlock1 * factorScale);
 	image(block,posXBlock2 * factorScale ,posYBlock2 * factorScale);
-	image(block,posXBlock3 * factorScale ,posYBlock3 * factorScale);
+	//image(block,posXBlock3 * factorScale ,posYBlock3 * factorScale);
 
 	addHoursText();
 	
@@ -234,11 +235,18 @@ function marioAnimation(){
 
 	const milliseconds = (new Date().getMilliseconds()) / 1000;
 	posYMarioStand = groundY + min(0, milliseconds*(milliseconds - 0.8))*jumpScale;
+	let s =  second() < 10 ? '0'+second() : second();
 
 	if (milliseconds > 0.05 && milliseconds < 0.75){
 		image(marioJump,posXMarioJump*factorScale,posYMarioStand*factorScale);
+		image(block,posXBlock3 * factorScale ,(posYBlock3-lenJumpBlock3) * factorScale);
+		addTimeIntoTheBlock(posXSecond,posYSecond-lenJumpBlock3,posXSecondShadow,posYSecondShadow-lenJumpBlock3,textFontSize,marioFont,s,factorScale);
 	}else{
-		image(marioStand,posXMarioStand*factorScale,posYMarioStand*factorScale);
+		image(marioStand,posXMarioStand*factorScale,(posYMarioStand-2)*factorScale);
+		image(block,posXBlock3 * factorScale ,(posYBlock3) * factorScale);
+		addTimeIntoTheBlock(posXSecond,posYSecond,posXSecondShadow,posYSecondShadow,textFontSize,marioFont,s,factorScale);
+
+
 	}
 
 	if (lastSecond !== second() ) {
@@ -273,11 +281,11 @@ function addHoursText(){
 
 	let h = hour() < 10 ? '0'+hour() : hour();
 	let m =  minute() < 10 ? '0'+minute() : minute();
-	let s =  second() < 10 ? '0'+second() : second();
+	//let s =  second() < 10 ? '0'+second() : second();
 
 	addTimeIntoTheBlock(posXHour,posYHour,posXHourShadow,posYHourShadow,textFontSize,marioFont,h,factorScale);
 	addTimeIntoTheBlock(posXMinute,posYMinute,posXMinuteShadow,posYMinuteShadow,textFontSize,marioFont,m,factorScale);
-	addTimeIntoTheBlock(posXSecond,posYSecond,posXSecondShadow,posYSecondShadow,textFontSize,marioFont,s,factorScale);
+	//addTimeIntoTheBlock(posXSecond,posYSecond,posXSecondShadow,posYSecondShadow,textFontSize,marioFont,s,factorScale);
 
 }
 
