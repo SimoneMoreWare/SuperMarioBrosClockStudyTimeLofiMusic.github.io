@@ -6,10 +6,10 @@ let dimYBackground = 800;
 let cloud;
 let dimXCloud = 140;
 let dimYCloud = 100;
-let posXCloud1 = 1200;
-let posYCloud1 = 100;
-let posXCloud2 = 760;
-let posYCloud2 = 150;
+let posXCloud1 = 1350;
+let posYCloud1 = 150;
+let posXCloud2 = 820;
+let posYCloud2 = 200;
 let panel;
 let dimXPanel = 690;
 let dimYPanel = 270;
@@ -84,6 +84,20 @@ let valueHIframe = (0.6*dimYPanel);
 let valueXIframe = (dimXPanel*0.9);
 let posXIframe = (posXPanel*1.6);
 let posYIframe = (posYPanel*2);
+let textSizeScores = 60;
+let totalScore = 0;
+let posXTotalScoreText = 850;
+let posYTotalScoreText = 70;
+let totalCoins = 0;
+let posXTotalCoinsText = 1020;
+let posYTotalCoinsText = 70;
+let posXTotalWorldText = 1180;
+let posYTotalWorldText = 70;
+let totalTime = 0;
+let posXTotalTimeText = 1330;
+let posYTotalTimeText = 70;
+let posXTotalLivesText = 1480;
+let posYTotalLivesText = 70;
 
 function preload(){
 
@@ -160,8 +174,40 @@ function draw(){
 	image(block,posXBlock3 * factorScale ,posYBlock3 * factorScale);
 
 	addHoursText();
+	
+	addScoreText(textSizeScores,factorScale,marioFont,"SCORE",totalTime*totalCoins,posXTotalScoreText,posYTotalScoreText);
+	addScoreText(textSizeScores,factorScale,marioFont,"COINS",totalCoins,posXTotalCoinsText,posYTotalCoinsText);
+	addScoreText(textSizeScores,factorScale,marioFont,"WORLD","UNI",posXTotalWorldText,posYTotalWorldText);
+	addScoreText(textSizeScores,factorScale,marioFont,"TIME",totalTime,posXTotalTimeText,posYTotalTimeText);
+	addScoreText(textSizeScores,factorScale,marioFont,"LIVES","7",posXTotalLivesText,posYTotalLivesText);
 
+}
 
+function addScoreText(fontSize,factorScale,font,title,value,posX,posY){
+	fill(255,223,201);
+	noStroke();
+	textAlign(CENTER);
+	textSize(fontSize * factorScale);
+	textFont(font);
+	text(title+"\n"+value, posX * factorScale, posY * factorScale);
+}
+
+function addTotalCoinsText(){
+	fill(255,223,201);
+	noStroke();
+	textAlign(CENTER);
+	textSize(textSizeScores * factorScale);
+	textFont(marioFont);
+	text("COINS\n"+totalCoins, posXTotalCoinsText * factorScale, posYTotalCoinsText * factorScale);
+}
+
+function addTotalTimeText(){
+	fill(255,223,201);
+	noStroke();
+	textAlign(CENTER);
+	textSize(textSizeScores * factorScale);
+	textFont(marioFont);
+	text("TIME\n"+totalTime, posXTotalTimeText * factorScale, posYTotalTimeText * factorScale);
 }
 
 function goombaAnimation(){
@@ -198,6 +244,7 @@ function marioAnimation(){
 	if (lastSecond !== second() ) {
 		if (lastSecond !== -1){
 			marioJumpSound.play();
+			totalTime = totalTime + 1;
 		}
 		lastSecond = second();
 	}
@@ -212,8 +259,11 @@ function coinAnimation(){
 
 	if (lastMinute !== minute()) {
 
-		if (lastMinute !== -1) coinSound.play();
-		
+		if (lastMinute !== -1){
+			coinSound.play();
+			totalCoins = totalCoins + 1;
+		}
+
 		lastMinute = minute();
 
 	}
