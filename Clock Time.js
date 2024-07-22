@@ -309,3 +309,20 @@ function addIframe() {
 	iframe.parent(container);
 	iframe.position(posXIframe* factorScale,posYIframe* factorScale);
 }
+
+window.addEventListener('beforeunload', (event) => {
+	// Cancel the event as stated by the standard.
+	event.preventDefault();
+	// Chrome requires returnValue to be set.
+	event.returnValue = '';
+  });
+
+  document.addEventListener('visibilitychange', function() {
+	if (document.hidden) {
+		console.log('User switched to another tab');
+		alert('You have switched to another tab!');
+	} else {
+		console.log('User switched back to the tab');
+		alert('Welcome back to the tab!');
+	}
+});
